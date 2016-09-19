@@ -1,10 +1,10 @@
 var express = require('express'),
     httpRequest = require('request'),
     app = express(),
-    http = rquire('http'),
+    http = require('http'),
     bodyParser = require('body-parser'),
-    port = process.env.PORT || 8000,
-    FACEBOOK_PAGE_ACCESS_TOKEN = process.env.FACEBOOK_PAGE_ACCESS_TOKEN
+    port = process.env.PORT || 8080,
+    FACEBOOK_PAGE_ACCESS_TOKEN = process.env.FACEBOOK_PAGE_ACCESS_TOKEN;
 
 app.get('/webhook/', function(req, res) {
     if (req.query['hub.verify_token'] === 'super_secret_token') {
@@ -25,3 +25,5 @@ app.post('/webhook/', function (req, res) {
   }
   res.sendStatus(200);
 });
+
+app.listen(process.env.PORT || 8080);
